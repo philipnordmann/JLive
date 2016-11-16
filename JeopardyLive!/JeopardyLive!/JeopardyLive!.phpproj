@@ -17,6 +17,22 @@
     <IncludeDebugInformation>false</IncludeDebugInformation>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="choose_category.php" />
+    <Compile Include="choose_topic.php" />
+    <Compile Include="db.php" />
+    <Compile Include="function.php" />
     <Compile Include="index.php" />
+    <Compile Include="insert_topic.php" />
+    <Compile Include="result_category.php" />
+    <Compile Include="result_topic.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="jquery-3.1.1.min.js" />
+    <Content Include="main.css" />
+    <Content Include="resources\plus-icon-13062.png" />
+    <Content Include="template.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="resources\" />
   </ItemGroup>
 </Project>
