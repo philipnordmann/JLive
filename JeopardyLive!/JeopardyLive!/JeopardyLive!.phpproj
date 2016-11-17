@@ -21,12 +21,18 @@
     <Compile Include="choose_topic.php" />
     <Compile Include="db.php" />
     <Compile Include="function.php" />
+    <Compile Include="get_answer.php" />
+    <Compile Include="get_question.php" />
     <Compile Include="index.php" />
     <Compile Include="insert_topic.php" />
+    <Compile Include="JGameScreen.php" />
     <Compile Include="result_category.php" />
     <Compile Include="result_topic.php" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="game.css" />
+    <Content Include="template_game.html" />
+    <Content Include="JavaScript1.js" />
     <Content Include="jquery-3.1.1.min.js" />
     <Content Include="main.css" />
     <Content Include="resources\plus-icon-13062.png" />
