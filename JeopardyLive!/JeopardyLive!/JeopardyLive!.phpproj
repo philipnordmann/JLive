@@ -21,9 +21,8 @@
     <Compile Include="choose_topic.php" />
     <Compile Include="db.php" />
     <Compile Include="function.php" />
-    <Compile Include="get_answer.php" />
-    <Compile Include="get_question.php" />
     <Compile Include="index.php" />
+    <Compile Include="insert_category.php" />
     <Compile Include="insert_topic.php" />
     <Compile Include="JGameScreen.php" />
     <Compile Include="result_category.php" />
@@ -37,6 +36,7 @@
     <Content Include="main.css" />
     <Content Include="resources\plus-icon-13062.png" />
     <Content Include="template.html" />
+    <Content Include="resources\tiles.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\" />
