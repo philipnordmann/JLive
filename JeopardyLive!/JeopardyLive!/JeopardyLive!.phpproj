@@ -20,7 +20,6 @@
     <Compile Include="choose_category.php" />
     <Compile Include="choose_topic.php" />
     <Compile Include="db.php" />
-    <Compile Include="function.php" />
     <Compile Include="helper.php" />
     <Compile Include="index.php" />
     <Compile Include="insert_category.php" />
