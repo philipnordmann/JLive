@@ -1,4 +1,5 @@
 <?php
+include("db.php");
 function createTile($link, $desc, $tileWidth) {
     ?>
     <div class="tile tile-<?php echo $tileWidth; ?> blue rounded shadow" onclick="location.href='<?php echo $link;?>';">
@@ -33,3 +34,4 @@ function createAdd($link, $itemDesc) {
 <?php
 }
 ?>
+

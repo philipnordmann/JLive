@@ -10,7 +10,16 @@ echo file_get_contents( "template_game.html" );
 
 //$thema = $_GET['thema'];
 //$katArray = $_POST['katArray'];
+$katArray = array(
+    1 => 1,
+    2 => 2,
+    3 => 3,
+    4 => 4,
+    5 => 5,
+    6 => 6,
+);
 
+$k_id = 1;
 
 /*
 $kategorie1 = $katarray(1);
@@ -23,111 +32,6 @@ $kategorie6 = $katarray(6);
 ?>
 <body>
     <table id="table" style="width:100%">
-        <!--  <tr>
-    <th><div>kat1</div></th>
-    <th><div>kat2</div></th>
-  	<th><div>kat3</div></th>
-  	<th><div>kat4</div></th>
-  	<th><div>kat5</div></th>
-  	<th><div>kat6</div></th>
-  </tr>
-  <tr>
-    <td><div class="tile">100</div></td>
-  	<td><div class="tile">100</div></td>
-  	<td><div class="tile">100</div></td>
-	<td><div class="tile">100</div></td>
-  	<td><div class="tile">100</div></td>
-  	<td>
-  		<div class="tile">100</div>
-  	</td>
-  </tr>
-	<tr>
-		<td>
-            <div class="content">200</div>
-		</td>
-		<td>
-            <div class="content">200</div>
-		</td>
-		<td>
-            <div class="content">200</div>
-		</td>
-		<td>
-            <div class="content">200</div>
-		</td>
-		<td>
-            <div class="content">200</div>
-		</td>
-		<td>
-            <div class="content">200</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-            <div class="jeopardykastendings">300</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">300</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">300</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">300</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">300</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">300</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-            <div class="jeopardykastendings">400</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">400</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">400</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">400</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">400</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">400</div>
-		</td>
-	</tr>
-	<tr>
-		<td>
-            <div class="jeopardykastendings">500</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">500</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">500</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">500</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">500</div>
-		</td>
-		<td>
-            <div class="jeopardykastendings">500</div>
-		</td>
-	</tr>
-
-</table>
-
-</body>
-
--->
-
         <tr>
             <th>kat1</th>
             <th>kat2</th>
@@ -150,7 +54,7 @@ $kategorie6 = $katarray(6);
                 <td>
 
                     <?php 
-         createTile("#",$j,"100 double-tile");
+         createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
                     ?>
                 </td>
                 <?php } ?>
