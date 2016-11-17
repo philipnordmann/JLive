@@ -1,5 +1,6 @@
 <?php
 include("db.php");
+include("helper.php");
 echo file_get_contents( "template.html" );
 $id = $_GET['id'];
 $queryResult =  mysqli_query($connection,"select bezeichnung from themen where t_id = $id");
@@ -60,28 +61,16 @@ $topic = $row['bezeichnung'];
         while($row=mysqli_fetch_array($strSQL_Result))
         {
             $id = $row['k_id'];
-            $bezeichnung = $row['bezeichnung'];
-        ?>
-        <a href="#" class="tile hvr-grow">
-            <?php echo $bezeichnung; ?>
-        </a>
-        <?php
+            $bezeichnung = $row['bezeichnung'];$link = "#";
+            createTile($link, $bezeichnung);
         }
         ?>
-        <a href="#openModal" class="tile hvr-grow">
-            <img src="resources/plus-icon-13062.png" height="20" width="20" />
-        </a>
     </div>
-    <div id="openModal" class="modalDialog">
-        <div>
-            <a href="#close" title="Close" class="close">X</a>
-            <form action="insert_category.php?t_id=<?php echo $t_id; ?>" method="post" target="">
-                <input type="text" name="bezeichnung" class="insert" placeholder="Enter new Category" />
-                <input type="submit" class="insert" value="Add Category" />
-            </form>
-            <br />
-        </div>
-    </div>
+    <?php
+    $link = "insert_category.php?t_id=".$t_id."";
+    $itemDesc = "Category";
+    createAdd($link, $itemDesc);
+    ?>
 </body>
 
 

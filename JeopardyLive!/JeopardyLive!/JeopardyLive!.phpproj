@@ -20,8 +20,8 @@
     <Compile Include="choose_category.php" />
     <Compile Include="choose_topic.php" />
     <Compile Include="db.php" />
+    <Compile Include="helper.php" />
     <Compile Include="index.php" />
-    <Compile Include="insert.php" />
     <Compile Include="insert_category.php" />
     <Compile Include="insert_topic.php" />
     <Compile Include="result_category.php" />
@@ -32,6 +32,7 @@
     <Content Include="main.css" />
     <Content Include="resources\plus-icon-13062.png" />
     <Content Include="template.html" />
+    <Content Include="resources\tiles.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\" />

@@ -1,5 +1,6 @@
 <?php
     include("db.php");
+    include("helper.php");
     echo file_get_contents( "template.html" );
 ?>
 <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
@@ -45,7 +46,7 @@ $('#searchid').click(function(){
     </div>
     <div id="result">
         <?php
-    $strSQL_Result = mysqli_query($connection,"select t_id, bezeichnung from themen order by t_id desc LIMIT 9");
+    $strSQL_Result = mysqli_query($connection,"select t_id, bezeichnung from themen order by t_id desc LIMIT 10");
     if (!$strSQL_Result) {
         printf("Error: %s\n", mysqli_error($connection));
         exit();
@@ -54,25 +55,14 @@ $('#searchid').click(function(){
     {
         $id = $row['t_id'];
         $bezeichnung = $row['bezeichnung'];
-        ?>
-        <a href="choose_category.php?id=<?php echo $id; ?>" class="tile hvr-grow">
-            <?php echo $bezeichnung; ?>
-        </a>
-        <?php
+        $link = "choose_category.php?id=".$id."";
+        createTile($link, $bezeichnung);
     }
         ?>
-        <a href="#openModal" class="tile hvr-grow">
-            <img src="resources/plus-icon-13062.png" height="20" width="20" />
-        </a>
     </div>
-    <div id="openModal" class="modalDialog">
-        <div>
-            <a href="#close" title="Close" class="close">X</a>
-            <form action="insert_topic.php" method="post" target="">
-                <input type="text" name="bezeichnung" class="insert" placeholder="Enter new Topic" />
-                <input type="submit" class="insert" value="Add Topic" />
-            </form>
-            <br />
-        </div>
-    </div>
+    <?php
+        $link = "insert_topic.php";
+        $itemDesc = "Topic";
+        createAdd($link, $itemDesc);
+    ?>
 </body>

@@ -1,0 +1,365 @@
+/* 
+*  *---------*
+*  |         |
+*  |  Tiles  |
+*  |         |
+*  *---------*
+*/ 
+
+.tile{
+    box-sizing: border-box !important;
+    display:inline-block !important;
+    position:relative !important;
+    vertical-align:top !impotant;
+}
+
+.tile:after{
+    display:block !important;
+    content: '' !important;
+}
+
+.tile > div{
+    position: absolute !important;
+    top:6px !important;
+    bottom:6px !important;
+    right:6px !important;
+    left:6px !important;
+}
+
+.tile.tile-10, .section.section-25{
+    width:17% !important;
+}
+
+.tile.tile-25, .section.section-25{
+    width:25% !important;
+}
+
+.tile.tile-33, .section.section-33{
+    width:33.33% !important;
+}
+
+.tile.tile-50, .section.section-50{
+    width:50% !important;
+}
+
+.tile.tile-66, .section.section-66{
+    width:66.66% !important;
+}
+
+.tile.tile-75, .section.section-75{
+    width:75% !important;
+}
+
+.tile.tile-100, .section.section-100{
+    width:100% !important;
+}
+
+.tile:after{
+    padding-top:100% !important;
+}
+
+.tile.double-tile:after{
+    padding-top:50% !important;
+}
+
+.tile.triple-tile:after{
+    padding-top:33.33% !important;
+}
+
+.tile.quadra-tile:after{
+    padding-top:25% !important;
+}
+
+.tile.double-tile.vertical:after{
+    padding-top:200% !important;
+}
+
+.tile.triple-tile.vertical:after{
+    padding-top:300% !important;
+}
+
+.tile.quadra-tile.vertical:after{
+    padding-top:400% !important;
+}
+
+/* 
+*  *------------*
+*  |            |
+*  |  Sections  |
+*  |            |
+*  *------------*
+*/ 
+
+.section{
+    box-sizing: border-box !important;
+    display:inline-block !important;
+    position:relative !important;
+    vertical-align:top !impotant;
+}
+
+.section > div{
+    margin:6px;
+    padding:10px;
+}
+
+.section p{
+    margin:10px 0;
+}
+
+
+
+/* 
+*  *----------------------*
+*  |                      |
+*  |  Custom Tile Styles  |
+*  |                      |
+*  *----------------------*
+*/ 
+
+
+/* darker tiles */
+.tile.red > div, .section.red > div{
+    background: #ff3019;
+    background: linear-gradient(to bottom,  #ff3019 0%,#cf0404 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
+}
+
+.tile.red a, .tile.red p, .section.red a, .section.red p{
+    color:#fff;
+}
+
+.tile.blue > div, .section.blue > div{
+    background: #7abcff;
+    background: linear-gradient(to bottom,  #7abcff 0%,#60abf8 44%,#4096ee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 );
+
+}
+
+.tile.blue a, .tile.blue p, .section.blue a, .section.blue p{
+    color:#fff;
+}
+
+.tile.green > div, .section.green > div{
+    background: #74f274;
+    background: linear-gradient(to bottom,  #74f274 0%,#58e258 44%,#3cd83c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#74f274', endColorstr='#3cd83c',GradientType=0 );
+}
+
+.tile.green a, .tile.green p, .section.green a, .section.green p{
+    color:#fff;
+}
+
+.tile.violet > div, .section.violet > div{
+    background: #e570e7;
+    background: linear-gradient(to bottom,  #e570e7 0%,#c85ec7 47%,#a849a3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e570e7', endColorstr='#a849a3',GradientType=0 );
+}
+
+.tile.violet a, .tile.violet p, .section.violet a, .section.violet p{
+    color:#fff;
+}
+
+.tile.orange > div, .section.orange > div{
+    background: #f9c667;
+    background: -moz-linear-gradient(top,  #f9c667 0%, #f79621 100%);
+    background: linear-gradient(to bottom,  #f9c667 0%,#f79621 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#f79621',GradientType=0 );
+
+}
+
+.tile.orange a, .tile.orange p, .section.orange a, .section.orange p{
+    color:#fff;
+}
+
+.tile.black > div, .section.black > div{
+    background:#111;
+}
+
+/* lighter backgrounds */
+.tile.gray > div, .section.gray > div{
+    background: #eee;
+    background: rgb(255,255,255);
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(244,244,244,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f4f4f4',GradientType=0 );
+}
+
+.tile.gray a, .tile.gray p, .section.gray a, .section.gray p{
+    color:#222;
+}
+
+.tile.yellow > div, .section.yellow > div{
+    background: #fefcea;
+    background: linear-gradient(to bottom,  #fefcea 0%,#f1da36 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=0 );
+
+}
+
+.tile.yellow a, .tile.yellow p, .section.yellow a, .section.yellow p{
+    color:#222;
+}
+
+.tile.black a, .tile.black p, .section.black a, .section.black p{
+    color:#fff;
+}
+
+/* more optics */
+.tile.light-border > div, .section.light-border > div{
+    border:1px solid #eee !important;
+}
+
+.tile.dark-border > div, .section.dark-border > div{
+    border:1px solid #002 !important;
+}
+
+.tile.rounded > div, .section.rounded > div{
+    border-radius:5px !important;
+}
+
+.tile.shadow > div, .section.shadow > div{
+    box-shadow: 0 0 5px rgba(6, 7, 8, 0.6), inset 0 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 
+*  *--------*
+*  |        |
+*  |  Grid  |
+*  |        |
+*  *--------*
+*/ 
+
+.grid{
+    display:inline-block !important;
+    vertical-align: top !important;
+}
+
+.grid-25{
+    width:25% !important;
+}
+
+.grid-33{
+    width:33.33% !important;
+}
+
+.grid-50{
+    width:50% !important;
+}
+
+.grid-66{
+    width:66.66% !important;
+}
+
+.grid-75{
+    width:75% !important;
+}
+
+.grid-100{
+    width:100% !important;
+}
+
+/* 
+*  *------------------------------*
+*  |                              |
+*  |  Tiles and Sections in Grid  |
+*  |                              |
+*  *------------------------------*
+*/ 
+
+.grid-25 > .tile-25, .grid-25 > .section-25{
+    width:100% !important;
+}
+
+.grid-33 > .tile-33, .grid-33 > .section-33{
+    width:100% !important;
+}
+
+.grid-50 > .tile-25, .grid-50 > .section-25{
+    width:50% !important;
+}
+
+.grid-50 > .tile-50, .grid-50 > .section-50{
+    width:100% !important;
+}
+
+.grid-66 > .tile-33, .grid-66 > .section-33{
+    width:50% !important;
+}
+
+.grid-66 > .tile-66, .grid-66 > .section-66{
+    width:100% !important;
+}
+
+.grid-75 > .tile-25, .grid-75 > .section-25{
+    width: 33.33% !important;
+}
+
+.grid-100 > .tile-25, .grid-75 > .section-25{
+    width: 25% !important;
+}
+
+.grid-75 > .tile-50, .grid-75 > .section-50{
+    width:66.66% !important;
+}
+
+.grid-75 > .tile-75, .grid-75 > .section-75{
+    width:100% !important;
+}
+
+/* 
+*  *-----------------*
+*  |                 |
+*  |   Grid in Grid  |
+*  |                 |
+*  *-----------------*
+*/ 
+
+.grid-50 > .grid-25{
+    width:50% !important;
+}
+
+.grid-66 > .grid-33{
+    width:50% !important;
+}
+
+.grid-75 > .grid-25{
+    width: 33.33% !important;
+}
+
+.grid-75 > .grid-50{
+    width: 66.66% !important;
+}
+
+/* 
+*  *-------------*
+*  |             |
+*  |  Centering  |
+*  |             |
+*  *-------------*
+*/ 
+
+.tile .tile-content{
+    position: relative;
+}
+
+.tile .tile-content p{
+    width:100%;
+    text-align:center;
+    margin:0;
+    padding:0;
+    font-size:16px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)
+}
+.tile .tile-content a{
+    display: block;
+    width:100%;
+    text-align:center;
+    margin:0;
+    padding:0;
+    font-size:16px;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)
+}
