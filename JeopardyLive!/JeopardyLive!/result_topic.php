@@ -1,5 +1,6 @@
 <?php
 include('db.php');
+include("helper.php");
 if($_POST)
 {
     $q = mysqli_real_escape_string($connection,$_POST['search']);
@@ -15,13 +16,8 @@ if($_POST)
         $bezeichnung = $row['bezeichnung'];
         $b_bezeichnung = '<strong>'.$q.'</strong>';
         $final_bezeichnung = str_ireplace($q, $b_bezeichnung, $bezeichnung);
-?>
-<a href="choose_category.php?id= <?php echo $id; ?>" class="tile hvr-grow"><?php echo $final_bezeichnung; ?></a>
-<?php
+        $link = "choose_category.php?id=".$id."";
+        createTile($link, $final_bezeichnung, 10);
     }
-?>
-<a href="#openModal" class="tile hvr-grow">
-<img src="resources/plus-icon-13062.png" height="20" width="20" /></a>
-<?php
 }
 ?>

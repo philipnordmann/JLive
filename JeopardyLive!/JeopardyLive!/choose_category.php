@@ -61,8 +61,9 @@ $topic = $row['bezeichnung'];
         while($row=mysqli_fetch_array($strSQL_Result))
         {
             $id = $row['k_id'];
-            $bezeichnung = $row['bezeichnung'];$link = "#";
-            createTile($link, $bezeichnung);
+            $bezeichnung = $row['bezeichnung'];
+            $link = "#";
+            createTile($link, $bezeichnung, 10);
         }
         ?>
     </div>

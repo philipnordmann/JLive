@@ -81,7 +81,6 @@ body {
     width: 400px;
 	position: relative;
 	margin: 10% auto;
-	padding: 5px 20px 13px 20px;
 	border-radius: 10px;
 	background: #fff;
 	background: -moz-linear-gradient(#fff, #999);
@@ -113,8 +112,6 @@ body {
     border:solid 1px #000;
     padding:10px;
     font-size:14px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .innerAdd {

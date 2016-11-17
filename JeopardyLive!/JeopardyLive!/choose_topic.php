@@ -56,7 +56,7 @@ $('#searchid').click(function(){
         $id = $row['t_id'];
         $bezeichnung = $row['bezeichnung'];
         $link = "choose_category.php?id=".$id."";
-        createTile($link, $bezeichnung);
+        createTile($link, $bezeichnung, 10);
     }
         ?>
     </div>
