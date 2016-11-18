@@ -2,18 +2,30 @@
 include("db.php");
 function createTile($link, $desc, $tileWidth) {
     $onclick = "location.href=".$link."";
-    _createTile($link, $onclick, $desc, $tileWidth);
+    _createTile($link, $onclick, $desc, $tileWidth, "");
 }
 
-function _createTile($link, $onclick, $desc, $tileWidth) {
+function _createTile($link, $onclick, $desc, $tileWidth, $id) {
 ?>
-<div class="tile tile-<?php echo $tileWidth; ?> blue rounded shadow" onclick="<?php echo $onclick;?>;">
+<div id="tile-<?php echo $id;?>" class="tile tile-<?php echo $tileWidth; ?> blue rounded shadow" onclick="<?php echo $onclick;?>">
     <div class="tile-content hvr-grow">
         <a href="<?php echo $link;?>">
             <p>
                 <?php echo $desc; ?>
             </p>
         </a>
+    </div>
+</div>
+<?php
+}
+
+function _createTileWithoutLink($onclick, $desc, $tileWidth, $id) {
+?>
+<div id="tile-<?php echo $id;?>" class="tile tile-<?php echo $tileWidth; ?> blue rounded shadow" onclick="<?php echo $onclick;?>">
+    <div class="tile-content hvr-grow">
+            <p>
+                <?php echo $desc; ?>
+            </p>
     </div>
 </div>
 <?php

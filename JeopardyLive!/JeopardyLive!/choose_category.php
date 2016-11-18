@@ -1,7 +1,7 @@
 <?php
 include("db.php");
 include("helper.php");
-echo file_get_contents( "template.html" );
+echo file_get_contents("template.html");
 $id = $_GET['id'];
 $queryResult =  mysqli_query($connection,"select bezeichnung from themen where t_id = $id");
 $row = mysqli_fetch_array($queryResult);
@@ -21,6 +21,7 @@ $topic = $row['bezeichnung'];
                     cache: false,
                     success: function (html) {
                         $("#result").html(html).show();
+                        validate();
                     }
                 });
             } return false;
@@ -43,11 +44,114 @@ $topic = $row['bezeichnung'];
     });
 </script>
 <script>
-    var arrayString;
+    var ids = new Array();
+    var pos = 1;
+    ids.length = 6;
 
-    function addToArray(id) {
-        arrayString += id + "-";
-        echo 
+    function addClass(element, className) {
+        if (!hasClass(element, className)) {
+            if (element.className) {
+                element.className += " " + className;
+            } else {
+                element.className = className;
+            }
+        }
+    }
+
+    function removeClass(element, className) {
+        var regexp = addClass[className];
+        if (!regexp) {
+            regexp = addClass[className] = new RegExp("(^|\\s)" + className + "(\\s|$)");
+        }
+        element.className = element.className.replace(regexp, "$2");
+    }
+
+    function hasClass(element, className) {
+        var regexp = addClass[className];
+        if (!regexp) {
+            regexp = addClass[className] = new RegExp("(^|\\s)" + className + "(\\s|$)");
+        }
+        return regexp.test(element.className);
+    }
+
+    function toggleClass(element, className) {
+        if (hasClass(element, className)) {
+            removeClass(element, className);
+        } else {
+            addClass(element, className);
+        }
+    }
+
+    function toggleArray(id) {
+        var elem = document.getElementById("tile-" + id);
+        if (!checkArray(ids, id)) {
+            if (getArrayCount(ids) < ids.length) {
+                pushArray(ids, id);
+                addClass(elem, "green");
+            }
+        }
+        else {
+            removeFromArray(ids, id);
+            removeClass(elem, "green");
+        }
+        document.getElementById("test").innerHTML = printArray(ids);
+
+    }
+
+    function getArrayCount(array) {
+        var ret = 0;
+        for (var i = 0; i < array.length; i++) {
+            if(array[i] != null){
+                ret++;
+            }
+        }
+        return ret;
+    }
+
+    function pushArray(array, val) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                array[i] = val;
+                return;
+            }
+        }
+    }
+
+    function removeFromArray(array, val) {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == val) {
+                array[i] = null;
+                return;
+            }
+        }
+    }
+
+    function checkArray(array, val)
+    {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] == val) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function validate() {
+        for (var i = 0; i < ids.length; i++) {
+            if(ids[i] != null){
+                toggleArray(ids[i]);
+            }
+        }
+    }
+
+    function printArray(array) {
+        var retString ="";
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] != null) {
+                retString += array[i] + "-";
+            }
+        }
+        return retString;
     }
 
 </script>
@@ -72,8 +176,8 @@ $topic = $row['bezeichnung'];
             $id = $row['k_id'];
             $bezeichnung = $row['bezeichnung'];
             $link = "#";
-            $onclick = "addToArray(".$id.")";
-            _createTile($onclick, $link, $bezeichnung, 10);
+            $onclick = "toggleArray(".$id.")";
+            _createTileWithoutLink($onclick, $bezeichnung, 10, $id);
         }
         ?>
     </div>
@@ -82,6 +186,7 @@ $topic = $row['bezeichnung'];
     $itemDesc = "Category";
     createAdd($link, $itemDesc);
     ?>
+    <p id="test"></p>
 </body>
 
 

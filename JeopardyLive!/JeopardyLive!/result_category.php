@@ -16,8 +16,8 @@ if($_POST)
         $bezeichnung   = $row['bezeichnung'];
         $b_bezeichnung = '<strong>'.$q.'</strong>';
         $final_bezeichnung = str_ireplace($q, $b_bezeichnung, $bezeichnung);
-        $link = "#";
-        createTile($link, $final_bezeichnung, 10);
+        $onclick = "toggleArray(".$id.")";
+        _createTileWithoutLink($onclick, $bezeichnung, 10, $id);
     }
 }
 ?>

@@ -117,3 +117,13 @@ body {
 .innerAdd {
     padding: 5%;
 }
+
+.selected > div {
+    background: #74f274;
+    background: linear-gradient(to bottom,  #74f274 0%,#58e258 44%,#3cd83c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#74f274', endColorstr='#3cd83c',GradientType=0 );
+}
+
+.selected a, p {
+    color:#fff;
+}
