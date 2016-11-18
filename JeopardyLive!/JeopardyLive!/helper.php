@@ -35,3 +35,38 @@ function createAdd($link, $itemDesc) {
 }
 ?>
 
+<?php
+function catIdToName($k_id){
+    $sql = "SELECT bezeichnung FROM kategorien WHERE K_ID = $k_id";
+    $qry = mysql_query( $sql );
+    $bezeichnung = mysql_fetch_array( $qry );
+    return $bezeichnung;
+}
+?>
+
+<?php
+function get_question_id($k_id, $points){
+    $sql = "SELECT F_ID FROM fragen WHERE k_ID = $k_id and wertung = $points";
+    $qry = mysql_query( $sql );
+    $f_id = mysql_fetch_array( $qry );
+    return $f_id;
+}
+?>
+
+<?php
+function get_question($f_id){
+    $sql = "SELECT frage FROM fragen WHERE F_ID = $f_id";
+    $qry = mysql_query( $sql );
+    $frage = mysql_fetch_array( $qry );
+    return $frage;
+}
+?>
+
+<?php
+function get_answer($f_id){
+    $sql = "SELECT antwort FROM fragen WHERE F_ID = $f_id";
+    $qry = mysql_query( $sql );
+    $antwort = mysql_fetch_array( $qry );
+    return $antwort;
+}
+?>
