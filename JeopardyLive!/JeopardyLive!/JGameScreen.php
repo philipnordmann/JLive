@@ -13,10 +13,10 @@ echo file_get_contents( "template_game.html" );
 $katArray = array(
     1 => 1,
     2 => 2,
-    3 => 3,
-    4 => 4,
-    5 => 5,
-    6 => 6,
+    3 => 12,
+    4 => 13,
+    5 => 14,
+    6 => 15,
 );
 
 $k_id = 1;
@@ -31,14 +31,15 @@ $kategorie6 = $katarray(6);
 */
 ?>
 <body>
-    <table id="table" style="width:100%">
+    
+    <table class = "customtable">
         <tr>
-            <th>kat1</th>
-            <th>kat2</th>
-            <th>kat3</th>
-            <th>kat4</th>
-            <th>kat5</th>
-            <th>kat6</th>
+            <th width="16,66%">Chipsatz</th>
+            <th width="16,66%">RAM</th>
+            <th width="16,66%">KM</th>
+            <th width="16,66%">Drucker</th>
+            <th width="16,66%">AEW</th>
+            <th width="16,66%">WGP</th>
         </tr>
         <?php
 
@@ -56,6 +57,7 @@ $kategorie6 = $katarray(6);
                     <?php 
          createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
                     ?>
+
                 </td>
                 <?php } ?>
             </tr>
@@ -64,5 +66,6 @@ $kategorie6 = $katarray(6);
             ?>
 
 </table>
+
 
 </body>

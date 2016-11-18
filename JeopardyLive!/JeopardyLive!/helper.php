@@ -19,6 +19,20 @@ function _createTile($link, $onclick, $desc, $tileWidth) {
 <?php
 }
 
+function _createQuestionTile($link, $onclick, $desc, $tileWidth) {
+?>
+<div class="tile tile-<?php echo $tileWidth; ?> blue rounded shadow" onclick="<?php echo $onclick;?>;">
+    <div class="tile-content hvr-grow question">
+        <a href="<?php echo $link;?>">
+            <p>
+                <?php echo $desc; ?>
+            </p>
+        </a>
+    </div>
+</div>
+<?php
+}
+
 function createAdd($link, $itemDesc) {
 ?>
     <a href="#openModal" class="tile hvr-grow">
@@ -42,36 +56,36 @@ function createAdd($link, $itemDesc) {
 
 <?php
 function catIdToName($k_id){
-    $sql = "SELECT bezeichnung FROM kategorien WHERE K_ID = $k_id";
-    $qry = mysql_query( $sql );
-    $bezeichnung = mysql_fetch_array( $qry );
+    include("db.php");
+    $queryResult =  mysqli_query($connection,"SELECT bezeichnung FROM kategorien WHERE K_ID = $k_id");
+    $bezeichnung = mysqli_fetch_array($queryResult);
     return $bezeichnung;
 }
 ?>
 
 <?php
 function get_question_id($k_id, $points){
-    $sql = "SELECT F_ID FROM fragen WHERE k_ID = $k_id and wertung = $points";
-    $qry = mysql_query( $sql );
-    $f_id = mysql_fetch_array( $qry );
-    return $f_id;
+    include("db.php");
+    $queryResult =  mysqli_query($connection,"SELECT f_id FROM fragen WHERE k_ID = $k_id and wertung = '$points'");
+    $f_id = mysqli_fetch_array($queryResult);
+    return $f_id['f_id'];
 }
 ?>
 
 <?php
 function get_question($f_id){
-    $sql = "SELECT frage FROM fragen WHERE F_ID = $f_id";
-    $qry = mysql_query( $sql );
-    $frage = mysql_fetch_array( $qry );
-    return $frage;
+    include("db.php");
+    $queryResult =  mysqli_query($connection,"SELECT frage FROM fragen WHERE F_ID = $f_id");
+    $frage = mysqli_fetch_array($queryResult);
+    return $frage['frage'];
 }
 ?>
 
 <?php
 function get_answer($f_id){
-    $sql = "SELECT antwort FROM fragen WHERE F_ID = $f_id";
-    $qry = mysql_query( $sql );
-    $antwort = mysql_fetch_array( $qry );
-    return $antwort;
+    include("db.php");
+    $queryResult =  mysqli_query($connection,"SELECT antwort FROM fragen WHERE F_ID = $f_id");
+    $antwort = mysqli_fetch_array($queryResult);
+    return $antwort['antwort'];
 }
 ?>

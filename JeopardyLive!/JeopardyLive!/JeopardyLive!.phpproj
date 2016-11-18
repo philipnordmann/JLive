@@ -32,6 +32,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="game.css" />
+    <Content Include="images\jlive_logo_final.png" />
+    <Content Include="images\jlive_logo_final2.png" />
+    <Content Include="images\jlive_logo_final_small.png" />
+    <Content Include="images\jlive_logo_final_small2.png" />
+    <Content Include="images\logo_test.PNG" />
     <Content Include="template_game.html" />
     <Content Include="JavaScript1.js" />
     <Content Include="jquery-3.1.1.min.js" />
@@ -41,6 +46,7 @@
     <Content Include="resources\tiles.css" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\" />
     <Folder Include="resources\" />
   </ItemGroup>
 </Project>
