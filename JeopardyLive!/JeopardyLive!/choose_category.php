@@ -42,6 +42,14 @@ $topic = $row['bezeichnung'];
         });
     });
 </script>
+<script>
+    var arrayString;
+
+    function addToArray(id) {
+        arrayString += id + "-";
+    }
+
+</script>
 <body>
     <h1>
         Thema: <?php echo $topic ?>
