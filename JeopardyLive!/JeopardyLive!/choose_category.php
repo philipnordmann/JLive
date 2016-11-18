@@ -47,6 +47,7 @@ $topic = $row['bezeichnung'];
 
     function addToArray(id) {
         arrayString += id + "-";
+        echo 
     }
 
 </script>
@@ -71,7 +72,8 @@ $topic = $row['bezeichnung'];
             $id = $row['k_id'];
             $bezeichnung = $row['bezeichnung'];
             $link = "#";
-            createTile($link, $bezeichnung, 10);
+            $onclick = "addToArray(".$id.")";
+            _createTile($onclick, $link, $bezeichnung, 10);
         }
         ?>
     </div>

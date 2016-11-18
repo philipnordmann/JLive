@@ -2,7 +2,7 @@
 include("db.php");
 function createTile($link, $desc, $tileWidth) {
     $onclick = "location.href=".$link."";
-    _createTile();
+    _createTile($link, $onclick, $desc, $tileWidth);
 }
 
 function _createTile($link, $onclick, $desc, $tileWidth) {
