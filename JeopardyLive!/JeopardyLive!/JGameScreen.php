@@ -2,44 +2,67 @@
 include("db.php");
 include("helper.php");
 echo file_get_contents( "template_game.html" );
-//if ($_POST) {
-//    echo '<pre>';
-//    echo htmlspecialchars(print_r($_POST, true));
-//    echo '</pre>';
-//}
+$points_done = null;
+$id_done = null;
+$overlayArr = "";
+if ($_POST) {
+    $katArray = explode("-",$_POST['katArray']);
 
-//$thema = $_GET['thema'];
-$katArray = explode("-",$_POST['katArray']);
-//$katArray = array(
-//    1 => 1,
-//    2 => 2,
-//    3 => 12,
-//    4 => 13,
-//    5 => 14,
-//    6 => 15,
-//);
+    if($_POST['overlayArr']){
+        $overlayArr = $_POST['overlayArr'];
+    }
 
-$k_id = 1;
+?>
+<script>
+    function post(path, params, method) {
+        method = method || "post"; // Set method to post by default if not specified.
 
-/*
-$kategorie1 = $katarray(1);
-$kategorie2 = $katarray(2);
-$kategorie3 = $katarray(3);
-$kategorie4 = $katarray(4);
-$kategorie5 = $katarray(5);
-$kategorie6 = $katarray(6);
-*/
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+
+    function abfahrt(link) {
+                post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, overlayArr: <?php echo "'".$overlayArr."'";?> });
+    }
+</script>
+<?php
+}
+if ($_GET) {
+    $points_done = $_GET["p"];
+    $id_done = $_GET["k_id"];
+}
 ?>
 <body>
+
     
     <table class = "customtable">
         <tr>
-            <th width="16,66%"><?php echo catIdToName($katArray[0]); ?></th>
-            <th width="16,66%"><?php echo catIdToName($katArray[1]); ?></th>
-            <th width="16,66%"><?php echo catIdToName($katArray[2]); ?></th>
-            <th width="16,66%"><?php echo catIdToName($katArray[3]); ?></th>
-            <th width="16,66%"><?php echo catIdToName($katArray[4]); ?></th>
-            <th width="16,66%"><?php echo catIdToName($katArray[5]); ?></th>
+            <?php for ($x = 0; $x < 6; $x++) {
+            ?>
+            <th width="16,66%">
+                <?php echo catIdToName($katArray[$x]); ?>
+            </th>
+            <?php
+                  }
+            ?>
         </tr>
         <?php
 
@@ -53,8 +76,12 @@ $kategorie6 = $katarray(6);
      {
             ?>
                 <td>
-                    <?php 
-                        createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
+                    <?php
+         if($points_done != null && $id_done != null && $j == $points_done && $katArray[$i] == $id_done){
+             _createTile("#","abfahrt('get_question.php?k_id=".$katArray[$i]."&p=".$j."')",$j,"100 double-tile gray","");
+         }else{
+             _createTile("#","abfahrt('get_question.php?k_id=".$katArray[$i]."&p=".$j."')",$j,"100 double-tile","");
+         }
                     ?>
 
                 </td>
