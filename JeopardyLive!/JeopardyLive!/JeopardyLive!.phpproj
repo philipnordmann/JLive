@@ -27,6 +27,7 @@
     <Compile Include="insert_category.php" />
     <Compile Include="insert_topic.php" />
     <Compile Include="JGameScreen.php" />
+    <Compile Include="JGameScreen_next.php" />
     <Compile Include="result_category.php" />
     <Compile Include="result_topic.php" />
   </ItemGroup>

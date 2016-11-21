@@ -8,7 +8,7 @@ $k_id = $_GET["k_id"];
 
 $question = get_question(get_question_id($k_id,$points));
 
-
-_createQuestionTile("get_answer.php?f_id=".get_question_id($k_id,$points),"",$question,"50 double-tile");
+_createQuestionTile("get_answer.php?p=".$points."&k_id=".$k_id."","",$question,"50 double-tile");
+//_createQuestionTile("get_answer.php?f_id=".get_question_id($k_id,$points),"",$question,"50 double-tile");
 
 ?>

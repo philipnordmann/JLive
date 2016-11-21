@@ -9,17 +9,20 @@ echo file_get_contents( "template_game.html" );
 //}
 
 //$thema = $_GET['thema'];
-$katArray = $_POST['katArray'];
-//$katArray = array(
-//    1 => 1,
-//    2 => 2,
-//    3 => 12,
-//    4 => 13,
-//    5 => 14,
-//    6 => 15,
-//);
-
+//$katArray = $_POST['katArray'];
+$katArray = array(
+    1 => 1,
+    2 => 2,
+    3 => 12,
+    4 => 13,
+    5 => 14,
+    6 => 15,
+);
+$id_done = $_GET["id_done"];
+$points_done = $_GET["points_done"];
 $k_id = 1;
+echo $id_done;
+echo $points_done;
 
 /*
 $kategorie1 = $katarray(1);
@@ -43,25 +46,29 @@ $kategorie6 = $katarray(6);
         </tr>
         <?php
 
- 
-     for($j = 100; $j <= 500; $j=$j+100)
-     {
+        
+        for($j = 100; $j <= 500; $j=$j+100)
+        {
         ?>
         <tr>
             <?php
-         for($i = 1; $i <= 6; $i++)
-     {
+            for($i = 1; $i <= 6; $i++)
+            {
             ?>
                 <td>
-                    <?php 
-         createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
+                    <?php
+                if($j==$points_done&&$katArray[$i]==$id_done){
+                    createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."","HALLO SIMON","100 double-tile");
+                }else{
+                    createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
+                }
                     ?>
-
+                
                 </td>
                 <?php } ?>
             </tr>
             <?php
- }
+        }
             ?>
 
 </table>

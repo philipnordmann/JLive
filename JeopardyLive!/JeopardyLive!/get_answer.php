@@ -2,10 +2,12 @@
 include("helper.php");
 echo file_get_contents( "template_game.html" );
 
-$f_id = $_GET["f_id"];
+$points = $_GET["p"];
+$k_id = $_GET["k_id"];
+//$f_id = $_GET["f_id"];
 
-$answer = get_answer($f_id);
+$answer = get_answer(get_question_id($k_id,$points));
 
-_createQuestionTile("JGameScreen.php","",$answer,"50 double-tile");
+_createQuestionTile("JGameScreen_next.php?id_done=".$k_id."&points_done=".$points."","",$answer,"50 double-tile");
 
 ?>
