@@ -78,7 +78,7 @@ function catIdToName($k_id){
 <?php
 function get_question_id($k_id, $points){
     include("db.php");
-    $queryResult =  mysqli_query($connection,"SELECT f_id FROM fragen WHERE k_ID = $k_id and wertung = '$points'");
+    $queryResult =  mysqli_query($connection,"SELECT f_id FROM fragen WHERE k_id = $k_id and wertung = '$points'");
     $f_id = mysqli_fetch_array($queryResult);
     return $f_id['f_id'];
 }
