@@ -25,7 +25,7 @@ function _createQuestionTile($link, $onclick, $desc, $tileWidth) {
     <div class="tile-content hvr-grow question">
         <a href="<?php echo $link;?>">
             <p>
-                <?php echo hyphen($desc); ?>
+                <?php echo $desc; ?>
             </p>
         </a>
     </div>
@@ -69,10 +69,9 @@ function createAdd($link, $itemDesc) {
 <?php
 function catIdToName($k_id){
     include("db.php");
-    //echo $k_id;
     $queryResult =  mysqli_query($connection,"SELECT bezeichnung FROM kategorien WHERE K_ID = $k_id");
     $bezeichnung = mysqli_fetch_array($queryResult);
-    return $bezeichnung['bezeichnung'];
+    return hyphen($bezeichnung['bezeichnung']);
 }
 ?>
 

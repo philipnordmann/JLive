@@ -72,7 +72,9 @@ $topic = $row['bezeichnung'];
 
 
     function abfahrt() {
-        post('JGameScreen.php', { katArray: printArray(ids) });
+        if (getArrayCount(ids) == 6) {
+            post('JGameScreen.php', { katArray: printArray(ids) });
+        }
     }
     </script>
     <h1>
@@ -105,7 +107,8 @@ $topic = $row['bezeichnung'];
     $itemDesc = "Category";
     createAdd($link, $itemDesc);
     ?>
-    <input onclick="abfahrt()" class="insert" value="Abfahrt" />
+    <!--<input  type="submit" value="Abfahrt" />-->
+    <img onclick="abfahrt()" height="50" width="50" src="resources/chevron-pfeil-nach-rechts-ios-7-schnittstelle-symbol_318-33616.jpg" class="tile hvr-grow" />
 </body>
 </html>
 
