@@ -12,6 +12,24 @@ if ($_POST) {
         $overlayArr = $_POST['overlayArr'];
     }
 
+    if($_POST['punktestand1']){
+        $punktestand1 = $_POST['punktestand1'];
+    }else{
+        $punktestand1 = 0;
+    }
+    if($_POST['punktestand2']){
+        $punktestand2 = $_POST['punktestand2'];
+    }else{
+        $punktestand2 = 0;
+    }
+    if($_POST['einsistdran']){
+        $einistdran = $_POST['einsistdran'];
+    }else{
+        $einsistdran = true;
+    }
+
+
+
 ?>
 <script>
     function post(path, params, method) {
@@ -39,8 +57,8 @@ if ($_POST) {
     }
 
 
-    function abfahrt(link) {
-                post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, overlayArr: <?php echo "'".$overlayArr."'";?> });
+         function abfahrt(link) {
+                post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, einsistdran: <?php echo "'".$einsistdran."'"?>, punktestand1: <?php echo "'".$punktestand1."'"?>, punktestand2: <?php echo "'".$punktestand2."'"?> });
     }
 </script>
 <?php
