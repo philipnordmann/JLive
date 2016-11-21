@@ -1,3 +1,4 @@
+<html lang="de">
 <?php
 include("db.php");
 include("helper.php");
@@ -7,8 +8,10 @@ $queryResult =  mysqli_query($connection,"select bezeichnung from themen where t
 $row = mysqli_fetch_array($queryResult);
 $topic = $row['bezeichnung'];
 ?>
-<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-<script type="text/javascript">
+<body>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="category.js"></script>
+    <script type="text/javascript">
     $(function () {
         $(".search").keyup(function () {
             var searchid = $(this).val();
@@ -42,120 +45,31 @@ $topic = $row['bezeichnung'];
             jQuery("#result").fadeIn();
         });
     });
-</script>
-<script>
-    var ids = new Array();
-    var pos = 1;
-    ids.length = 6;
 
-    function addClass(element, className) {
-        if (!hasClass(element, className)) {
-            if (element.className) {
-                element.className += " " + className;
-            } else {
-                element.className = className;
+    function post(path, params, method) {
+        method = method || "post"; // Set method to post by default if not specified.
+
+        // The rest of this code assumes you are not using a library.
+        // It can be made less wordy if you use one.
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", path);
+
+        for (var key in params) {
+            if (params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
             }
         }
+
+        document.body.appendChild(form);
+        form.submit();
     }
-
-    function removeClass(element, className) {
-        var regexp = addClass[className];
-        if (!regexp) {
-            regexp = addClass[className] = new RegExp("(^|\\s)" + className + "(\\s|$)");
-        }
-        element.className = element.className.replace(regexp, "$2");
-    }
-
-    function hasClass(element, className) {
-        var regexp = addClass[className];
-        if (!regexp) {
-            regexp = addClass[className] = new RegExp("(^|\\s)" + className + "(\\s|$)");
-        }
-        return regexp.test(element.className);
-    }
-
-    function toggleClass(element, className) {
-        if (hasClass(element, className)) {
-            removeClass(element, className);
-        } else {
-            addClass(element, className);
-        }
-    }
-
-    function toggleArray(id) {
-        var elem = document.getElementById("tile-" + id);
-        if (!checkArray(ids, id)) {
-            if (getArrayCount(ids) < ids.length) {
-                pushArray(ids, id);
-                addClass(elem, "green");
-            }
-        }
-        else {
-            removeFromArray(ids, id);
-            removeClass(elem, "green");
-        }
-        document.getElementById("test").innerHTML = printArray(ids);
-
-    }
-
-    function getArrayCount(array) {
-        var ret = 0;
-        for (var i = 0; i < array.length; i++) {
-            if(array[i] != null){
-                ret++;
-            }
-        }
-        return ret;
-    }
-
-    function pushArray(array, val) {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                array[i] = val;
-                return;
-            }
-        }
-    }
-
-    function removeFromArray(array, val) {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i] == val) {
-                array[i] = null;
-                return;
-            }
-        }
-    }
-
-    function checkArray(array, val)
-    {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i] == val) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function validate() {
-        for (var i = 0; i < ids.length; i++) {
-            if(ids[i] != null){
-                toggleArray(ids[i]);
-            }
-        }
-    }
-
-    function printArray(array) {
-        var retString ="";
-        for (var i = 0; i < array.length; i++) {
-            if (array[i] != null) {
-                retString += array[i] + "-";
-            }
-        }
-        return retString;
-    }
-
-</script>
-<body>
+    </script>
     <h1>
         Thema: <?php echo $topic ?>
     </h1>
@@ -186,7 +100,8 @@ $topic = $row['bezeichnung'];
     $itemDesc = "Category";
     createAdd($link, $itemDesc);
     ?>
-    <p id="test"></p>
+    <input onclick="post('jgamescreen.php', {katarray: ids})" class="insert" value="Abfahrt" />
 </body>
+</html>
 
 

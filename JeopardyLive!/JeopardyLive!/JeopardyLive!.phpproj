@@ -32,6 +32,7 @@
     <Compile Include="result_topic.php" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="category.js" />
     <Content Include="game.css" />
     <Content Include="images\jlive_logo_final.png" />
     <Content Include="images\jlive_logo_final2.png" />
