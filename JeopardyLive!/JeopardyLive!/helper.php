@@ -1,7 +1,7 @@
 <?php
 include("db.php");
 function createTile($link, $desc, $tileWidth) {
-    $onclick = "location.href=".$link."";
+    $onclick = "location.href='".$link."'";
     _createTile($link, $onclick, $desc, $tileWidth, "");
 }
 
@@ -11,7 +11,7 @@ function _createTile($link, $onclick, $desc, $tileWidth, $id) {
     <div class="tile-content hvr-grow">
         <a href="<?php echo $link;?>">
             <p>
-                <?php echo $desc; ?>
+                <?php echo hyphen($desc); ?>
             </p>
         </a>
     </div>
@@ -25,7 +25,7 @@ function _createQuestionTile($link, $onclick, $desc, $tileWidth) {
     <div class="tile-content hvr-grow question">
         <a href="<?php echo $link;?>">
             <p>
-                <?php echo $desc; ?>
+                <?php echo hyphen($desc); ?>
             </p>
         </a>
     </div>
@@ -38,7 +38,7 @@ function _createTileWithoutLink($onclick, $desc, $tileWidth, $id) {
 <div id="tile-<?php echo $id;?>" class="tile tile-<?php echo $tileWidth; ?> blue rounded shadow" onclick="<?php echo $onclick;?>">
     <div class="tile-content hvr-grow">
             <p>
-                <?php echo $desc; ?>
+                <?php echo hyphen($desc); ?>
             </p>
     </div>
 </div>
@@ -99,5 +99,9 @@ function get_answer($f_id){
     $queryResult =  mysqli_query($connection,"SELECT antwort FROM fragen WHERE F_ID = $f_id");
     $antwort = mysqli_fetch_array($queryResult);
     return $antwort['antwort'];
+}
+
+function hyphen($input) {
+    return wordwrap ($input, 10, "&shy;", true);
 }
 ?>

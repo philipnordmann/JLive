@@ -13,11 +13,12 @@ if($_POST)
     }
     while($row=mysqli_fetch_array($strSQL_Result))
     {
+        $k_id = $row['k_id'];
         $bezeichnung   = $row['bezeichnung'];
         $b_bezeichnung = '<strong>'.$q.'</strong>';
         $final_bezeichnung = str_ireplace($q, $b_bezeichnung, $bezeichnung);
-        $onclick = "toggleArray(".$id.")";
-        _createTileWithoutLink($onclick, $bezeichnung, 10, $id);
+        $onclick = "toggleArray(".$k_id.")";
+        _createTileWithoutLink($onclick, $bezeichnung, 10, $k_id);
     }
 }
 ?>
