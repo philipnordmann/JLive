@@ -9,7 +9,7 @@ echo file_get_contents( "template_game.html" );
 //}
 
 //$thema = $_GET['thema'];
-$katArray = $_POST['katArray'];
+$katArray = explode("-",$_POST['katArray']);
 //$katArray = array(
 //    1 => 1,
 //    2 => 2,
@@ -34,19 +34,19 @@ $kategorie6 = $katarray(6);
     
     <table class = "customtable">
         <tr>
-            <th width="16,66%">Chipsatz</th>
-            <th width="16,66%">RAM</th>
-            <th width="16,66%">KM</th>
-            <th width="16,66%">Drucker</th>
-            <th width="16,66%">AEW</th>
-            <th width="16,66%">WGP</th>
+            <th width="16,66%"><?php catIdToName($katArray[1]); ?></th>
+            <th width="16,66%"><?php catIdToName($katArray[2]); ?></th>
+            <th width="16,66%"><?php catIdToName($katArray[3]); ?></th>
+            <th width="16,66%"><?php catIdToName($katArray[4]); ?></th>
+            <th width="16,66%"><?php catIdToName($katArray[5]); ?></th>
+            <th width="16,66%"><?php catIdToName($katArray[6]); ?></th>
         </tr>
         <?php
 
- 
+
      for($j = 100; $j <= 500; $j=$j+100)
      {
-        ?>
+?>
         <tr>
             <?php
          for($i = 1; $i <= 6; $i++)
@@ -54,7 +54,7 @@ $kategorie6 = $katarray(6);
             ?>
                 <td>
                     <?php 
-         createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
+                        createTile("get_question.php?k_id=".$katArray[$i]."&p=".$j."",$j,"100 double-tile");
                     ?>
 
                 </td>

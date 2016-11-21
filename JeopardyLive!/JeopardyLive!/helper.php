@@ -71,7 +71,7 @@ function catIdToName($k_id){
     include("db.php");
     $queryResult =  mysqli_query($connection,"SELECT bezeichnung FROM kategorien WHERE K_ID = $k_id");
     $bezeichnung = mysqli_fetch_array($queryResult);
-    return $bezeichnung;
+    return $bezeichnung['bezeichnung'];
 }
 ?>
 

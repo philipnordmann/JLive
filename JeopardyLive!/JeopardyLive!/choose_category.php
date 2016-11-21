@@ -100,9 +100,7 @@ $topic = $row['bezeichnung'];
     $itemDesc = "Category";
     createAdd($link, $itemDesc);
     ?>
-    <form action="post('JGameScreen.php', {katArray: ids})">
-        <input type="submit" class="insert" value="Abfahrt" />
-    </form>
+    <input onclick="post('jgamescreen.php', {katarray: ids})" class="insert" value="Abfahrt" />
 </body>
 </html>
 
