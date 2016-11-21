@@ -66,5 +66,6 @@ $kategorie6 = $katarray(6);
 
 </table>
 
+Team 1
 
 </body>
