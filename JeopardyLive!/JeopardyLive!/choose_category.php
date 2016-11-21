@@ -69,6 +69,11 @@ $topic = $row['bezeichnung'];
         document.body.appendChild(form);
         form.submit();
     }
+
+
+    function abfahrt() {
+        post('JGameScreen.php', { katArray: printArray(ids) });
+    }
     </script>
     <h1>
         Thema: <?php echo $topic ?>
@@ -100,7 +105,7 @@ $topic = $row['bezeichnung'];
     $itemDesc = "Category";
     createAdd($link, $itemDesc);
     ?>
-    <input onclick="post('jgamescreen.php', {katarray: ids})" class="insert" value="Abfahrt" />
+    <input onclick="abfahrt()" class="insert" value="Abfahrt" />
 </body>
 </html>
 

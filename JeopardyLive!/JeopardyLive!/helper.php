@@ -69,6 +69,7 @@ function createAdd($link, $itemDesc) {
 <?php
 function catIdToName($k_id){
     include("db.php");
+    //echo $k_id;
     $queryResult =  mysqli_query($connection,"SELECT bezeichnung FROM kategorien WHERE K_ID = $k_id");
     $bezeichnung = mysqli_fetch_array($queryResult);
     return $bezeichnung['bezeichnung'];

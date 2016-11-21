@@ -34,12 +34,12 @@ $kategorie6 = $katarray(6);
     
     <table class = "customtable">
         <tr>
-            <th width="16,66%"><?php catIdToName($katArray[1]); ?></th>
-            <th width="16,66%"><?php catIdToName($katArray[2]); ?></th>
-            <th width="16,66%"><?php catIdToName($katArray[3]); ?></th>
-            <th width="16,66%"><?php catIdToName($katArray[4]); ?></th>
-            <th width="16,66%"><?php catIdToName($katArray[5]); ?></th>
-            <th width="16,66%"><?php catIdToName($katArray[6]); ?></th>
+            <th width="16,66%"><?php echo catIdToName($katArray[0]); ?></th>
+            <th width="16,66%"><?php echo catIdToName($katArray[1]); ?></th>
+            <th width="16,66%"><?php echo catIdToName($katArray[2]); ?></th>
+            <th width="16,66%"><?php echo catIdToName($katArray[3]); ?></th>
+            <th width="16,66%"><?php echo catIdToName($katArray[4]); ?></th>
+            <th width="16,66%"><?php echo catIdToName($katArray[5]); ?></th>
         </tr>
         <?php
 
@@ -49,7 +49,7 @@ $kategorie6 = $katarray(6);
 ?>
         <tr>
             <?php
-         for($i = 1; $i <= 6; $i++)
+         for($i = 0; $i < 6; $i++)
      {
             ?>
                 <td>
