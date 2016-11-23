@@ -48,7 +48,6 @@ function toggleArray(id) {
         removeFromArray(ids, id);
         removeClass(elem, "green");
     }
-    document.getElementById("test").innerHTML = printArray(ids);
 
 }
 

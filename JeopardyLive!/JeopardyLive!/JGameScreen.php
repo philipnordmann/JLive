@@ -1,13 +1,14 @@
 <?php
 include ("db.php");
 include ("helper.php");
-echo file_get_contents ( "template_game.html" );
+echo file_get_contents ( "template.html" );
 $game_statusString = "0-0-0";
 $overlayArr = "";
+$winner = 0;
 if ($_POST) {
 	$katArray = explode ( "-", $_POST ['katArray'] );
 	
-	if ($_POST ['overlayArrString']) {
+	if (isset ( $_POST ['overlayArrString'] )) {
 		$overlayArrString = $_POST ['overlayArrString'];
 	} else {
 		$overlayArrString = "100-200-300-400-500;100-200-300-400-500;100-200-300-400-500;100-200-300-400-500;100-200-300-400-500;100-200-300-400-500;";
@@ -17,25 +18,35 @@ if ($_POST) {
 		$overlayArr [$i] = explode ( "-", $overlayArr1 [$i] );
 	}
 	
-	if ($_POST ['game_status']) {
+	if (isset ( $_POST ['game_status'] )) {
 		$game_statusString = $_POST ['game_status'];
 	}
-	$game_status = explode ("-", $game_statusString);
+	$game_status = explode ( "-", $game_statusString );
 }
 
 if ($_GET) {
-	$points_done = $_GET ["p"];
-	if ($game_status[0] = "0") {
-		$game_status[0] = 1;
-		$game_status[1]+=$points_done;
-	}
-	else{
-		$game_status[0] = 0;
-		$game_status[2]+=$points_done;
+	if (isset ( $_GET ["p"] )) {
+		$points_done = $_GET ["p"];
+		if ($game_status [0] == 0) {
+			$game_status [0] = 1;
+			$game_status [1] += $points_done;
+		} else {
+			$game_status [0] = 0;
+			$game_status [2] += $points_done;
+		}
+		if ($game_status [1] > $game_status [2]) {
+			$winner = 1;
+		} elseif ($game_status [1] < $game_status [2]) {
+			$winner = 2;
+		} else {
+			$winner = 0;
+		}
 	}
 }
+$game_statusString = arrayToString ( $game_status );
 
 ?>
+<body>
 <script>
     function post(path, params, method) {
         method = method || "post"; // Set method to post by default if not specified.
@@ -91,14 +102,16 @@ if ($_GET) {
 					}
 				}
 				overlayArrString = arrayToString(ovArr);
-				document.getElementById("test").innerHTML = overlayArrString;
 				post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, overlayArrString: overlayArrString, game_status:  <?php echo "'".$game_statusString."'"; ?>});
           		
                 
     }
-</script>
-<body>
 
+         function end() {
+            
+			post("end.php", {winner: <?php echo $winner;?>});
+		}
+</script>
 
 	<table class="customtable">
 		<tr>
@@ -124,10 +137,10 @@ if ($_GET) {
                 <td>
                     <?php
 										if ($overlayArr [$i] [($j - 100) / 100] != "") {
-											$p = ($j-100) / 100;
-											_createTile ( "#", "abfahrt('get_question.php?k_id=" . $katArray [$i] . "&p=" . $j . "',".$i.",".$p.")", $j, "100 double-tile", "" );
+											$p = ($j - 100) / 100;
+											_createTileWithoutLink ( "abfahrt('get_question.php?k_id=" . $katArray [$i] . "&p=" . $j . "'," . $i . "," . $p . ")", $j, "100 triple-tile", "" );
 										} else {
-											_createTile ( "#", "", $j, "100 double-tile gray", "" );
+											 _createTileWithoutLinkAndGrow ( "", $j, "100 triple-tile gray turn", "" );
 										}
 										?>
 
@@ -137,17 +150,39 @@ if ($_GET) {
             <?php
 								}
 								?>
-
-</table>
-<?php
-
-for($i = 0; $i < 6; $i ++) {
-	for($j = 0; $j < 5; $j ++) {
-		echo $overlayArr [$i] [$j];
-	}
-}
-?>
-
-<p id="test"></p>
-
+								<tr>
+			<td>
+				<div class="tile tile-100 double-tile red rounded shadow<?php 
+					if ($game_status [0] == 1) {
+						echo " turn";
+					}?>">
+					<div class="tile-content">
+						<p>
+                <?php echo "Team 1<br />".$game_status [1]; ?>
+          				</p>
+					</div>
+				</div>
+			</td>
+			<td />
+			<td colspan="2"><div
+					class="tile tile-100 quadra-tile blue rounded shadow" onclick="end()">
+					<div class="tile-content hvr-grow">
+						<p>Ende</p>
+					</div>
+				</div></td>
+			<td />
+			<td>
+				<div class="tile tile-100 double-tile violet rounded shadow<?php 
+					if ($game_status [0] == 0) {
+						echo " turn";
+					}?>">
+					<div class="tile-content">
+						<p>
+                <?php echo "Team 2<br />".$game_status [2]; ?>
+            </p>
+					</div>
+				</div>
+			</td>
+	
+	</table>
 </body>

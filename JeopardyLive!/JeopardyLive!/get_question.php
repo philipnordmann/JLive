@@ -1,6 +1,6 @@
 <?php
 include ("helper.php");
-echo file_get_contents ( "template_game.html" );
+echo file_get_contents ( "template.html" );
 
 $points = $_GET ["p"];
 $k_id = $_GET ["k_id"];
@@ -41,10 +41,9 @@ if ($_POST) {
     }
 </script>
 <?php
+$q_id = get_question_id ( $k_id, $points );
+$question = get_question ( $q_id );
 
-$question = get_question ( get_question_id ( $k_id, $points ) );
-
-_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&k_id=" . $k_id . "')", $question, "50 double-tile", "" );
-// _createQuestionTile("#","abfahrt('get_answer.php?p=".$points."&k_id=".$k_id.""')",$question,"50 double-tile","");
+_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&q_id=" . $q_id . "')", $question, "100 triple-tile", "" );
 
 ?>

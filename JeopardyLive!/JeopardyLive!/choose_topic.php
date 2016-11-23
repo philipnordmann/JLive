@@ -3,44 +3,34 @@ include ("db.php");
 include ("helper.php");
 echo file_get_contents ( "template.html" );
 ?>
+<body>
 <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
     $(".search").keyup(function()
     {
         var searchid = $(this).val();
-        var dataString = 'search='+ searchid+"&table=themen"
+        
         if (searchid != '') {
-            $.ajax({
-                type: "POST",
-                url: "result_topic.php",
-                data: dataString,
-                cache: false,
-                success: function (html) {
-                $("#result").html(html).show();
+        	var dataString = 'search='+ searchid+"&table=themen"
+            
+        } else{
+        	var dataString ="&table=themen"
         }
-    });
-        }
-    return false;
-});
-jQuery("#result").live("click",function(e){
-    var $clicked = $(e.target);
-    var $name = $clicked.find('.name').html();
-    var decoded = $("<div/>").html($name).text();
-    $('#searchid').val(decoded);
-});
-jQuery(document).live("click", function(e) {
-    var $clicked = $(e.target);
-    if (! $clicked.hasClass("search")){
-        jQuery("#result").fadeOut();
+        $.ajax({
+            type: "POST",
+            url: "result_topic.php",
+            data: dataString,
+            cache: false,
+            success: function (html) {
+            $("#result").html(html).show();
     }
 });
-$('#searchid').click(function(){
-    jQuery("#result").fadeIn();
+    return false;
 });
 });
 </script>
-<body>
+<h1>Themenauswahl</h1>
 	<div class="content">
 		<input type="text" class="search" id="searchid"
 			placeholder="Search for Topic" /><br />

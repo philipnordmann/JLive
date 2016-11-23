@@ -1,10 +1,10 @@
 <?php
 include("helper.php");
-echo file_get_contents( "template_game.html" );
+echo file_get_contents( "template.html" );
 
 $points = $_GET["p"];
-$k_id = $_GET["k_id"];
-$answer = get_answer(get_question_id($k_id,$points));
+$q_id = $_GET["q_id"];
+$answer = get_answer($q_id);
 if ($_POST) {
 	$overlayArrString = $_POST ['overlayArrString'];
 	$game_status = $_POST ['game_status'];
@@ -46,13 +46,13 @@ if ($_POST) {
 
 
 
-_createQuestionTile("#","abfahrt('JGameScreen.php?p=".$points."&k_id=".$k_id."')",$answer,"50 double-tile","");
+_createQuestionTile("#","abfahrt('JGameScreen.php?p=".$points."&k_id=".$k_id."')",$answer,"100 triple-tile","");
 ?>
 </p>
 <p>
 <?php
-_createQuestionTile("#","abfahrt('JGameScreen.php?p=".$points."&k_id=".$k_id."')","gewusst!","10 double-tile","");
-_createQuestionTile("#","abfahrt('JGameScreen.php?p=0&k_id=".$k_id."')","nicht gewusst...","10 double-tile","");
+_createTile("#","abfahrt('JGameScreen.php?p=".$points."')","gewusst!","10 double-tile","");
+_createTile("#","abfahrt('JGameScreen.php?p=0')","nicht gewusst...","10 double-tile right","");
 
 ?>
 </p>
