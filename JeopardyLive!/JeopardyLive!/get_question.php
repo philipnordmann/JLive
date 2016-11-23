@@ -1,12 +1,13 @@
 <?php
-include("helper.php");
-echo file_get_contents( "template_game.html" );
+include ("helper.php");
+echo file_get_contents ( "template_game.html" );
 
-$points = $_GET["p"];
-$k_id = $_GET["k_id"];
-$einsistdran = $_GET["einsistdran"];
-$punktestand1 = $_GET["punktestand1"];
-$punktestand2 = $_GET["punktestand2"];
+$points = $_GET ["p"];
+$k_id = $_GET ["k_id"];
+if ($_POST) {
+	$overlayArrString = $_POST ['overlayArrString'];
+	$game_status = $_POST ['game_status'];
+}
 
 ?>
 <script>
@@ -36,14 +37,14 @@ $punktestand2 = $_GET["punktestand2"];
 
 
          function abfahrt(link) {
-                post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, einsistdran: <?php echo "'".$einsistdran."'"?>, punktestand1: <?php echo "'".$punktestand1."'"?>, punktestand2: <?php echo "'".$punktestand2."'"?> });
+        	 post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, overlayArrString: <?php echo "'".$overlayArrString."'"; ?>, game_status:  <?php echo "'".$game_status."'"; ?>});
     }
 </script>
 <?php
 
-$question = get_question(get_question_id($k_id,$points));
+$question = get_question ( get_question_id ( $k_id, $points ) );
 
-_createQuestionTile("#","abfahrt('get_answer.php?p=".$points."&k_id=".$k_id."')",$question,"50 double-tile","");
-//_createQuestionTile("#","abfahrt('get_answer.php?p=".$points."&k_id=".$k_id.""')",$question,"50 double-tile","");
+_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&k_id=" . $k_id . "')", $question, "50 double-tile", "" );
+// _createQuestionTile("#","abfahrt('get_answer.php?p=".$points."&k_id=".$k_id.""')",$question,"50 double-tile","");
 
 ?>

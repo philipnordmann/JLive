@@ -5,14 +5,9 @@ echo file_get_contents( "template_game.html" );
 $points = $_GET["p"];
 $k_id = $_GET["k_id"];
 $answer = get_answer(get_question_id($k_id,$points));
-$einsistdran = $_GET["einsistdran"];
-$punktestand1 = $_GET["punktestand1"];
-$punktestand2 = $_GET["punktestand2"];
-
-if($einsistdran==true){
-    $einsistdran=false;
-}else{
-    $einsistdran=true;
+if ($_POST) {
+	$overlayArrString = $_POST ['overlayArrString'];
+	$game_status = $_POST ['game_status'];
 }
 
 ?>
@@ -43,7 +38,7 @@ if($einsistdran==true){
 
 
     function abfahrt(link) {
-                post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, einsistdran: <?php echo "'".$einsistdran."'"?>, punktestand1: <?php echo "'".$punktestand1."'"?>, punktestand2: <?php echo "'".$punktestand2."'"?> });
+    	post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, overlayArrString: <?php echo "'".$overlayArrString."'"; ?>, game_status:  <?php echo "'".$game_status."'"; ?>});
     }
 </script>
 <p>
