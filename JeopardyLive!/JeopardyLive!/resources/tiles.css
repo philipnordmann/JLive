@@ -13,6 +13,14 @@
     vertical-align:top !impotant;
 }
 
+.tile-right{
+    box-sizing: border-box !important;
+    display:inline-block !important;
+    position:absolute !important;
+    vertical-align:top !impotant;
+    right: 5px;
+}
+
 .tile:after{
     display:block !important;
     content: '' !important;
@@ -295,6 +303,9 @@
 .grid-100 > .tile-25, .grid-75 > .section-25{
     width: 25% !important;
 }
+.grid-100 > .tile-50, .grid-75 > .section-25{
+    width: 50% !important;
+}
 
 .grid-75 > .tile-50, .grid-75 > .section-50{
     width:66.66% !important;
@@ -338,6 +349,8 @@
 
 .tile .tile-content{
     position: relative;
+    display: inline-block;
+ 	vertical-align: middle;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
@@ -356,19 +369,20 @@
     transform: translate(0, -50%)
 }
 .tile .tile-content a{
-    display: block;
     width:100%;
     text-align:center;
     margin:0;
     padding:0;
-    font-size:20px;
+    font-size:30px;
     font-weight: bold;
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
+    text-decoration: none;
 
+}
+
+.tile.right{
+	position:absolute !important;
+	right: 10px !important;
 }

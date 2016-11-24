@@ -1,18 +1,13 @@
 <?php
 include("helper.php");
-echo file_get_contents( "template_game.html" );
+echo file_get_contents( "template.html" );
 
 $points = $_GET["p"];
-$k_id = $_GET["k_id"];
-$answer = get_answer(get_question_id($k_id,$points));
-$einsistdran = $_GET["einsistdran"];
-$punktestand1 = $_GET["punktestand1"];
-$punktestand2 = $_GET["punktestand2"];
-
-if($einsistdran==true){
-    $einsistdran=false;
-}else{
-    $einsistdran=true;
+$q_id = $_GET["q_id"];
+$answer = get_answer($q_id);
+if ($_POST) {
+	$overlayArrString = $_POST ['overlayArrString'];
+	$game_status = $_POST ['game_status'];
 }
 
 ?>
@@ -43,7 +38,7 @@ if($einsistdran==true){
 
 
     function abfahrt(link) {
-                post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, einsistdran: <?php echo "'".$einsistdran."'"?>, punktestand1: <?php echo "'".$punktestand1."'"?>, punktestand2: <?php echo "'".$punktestand2."'"?> });
+    	post(link, { katArray: <?php echo "'".$_POST['katArray']."'";?>, overlayArrString: <?php echo "'".$overlayArrString."'"; ?>, game_status:  <?php echo "'".$game_status."'"; ?>});
     }
 </script>
 <p>
@@ -51,13 +46,13 @@ if($einsistdran==true){
 
 
 
-_createQuestionTile("#","abfahrt('JGameScreen.php?p=".$points."&k_id=".$k_id."')",$answer,"50 double-tile","");
+_createQuestionTile("#","abfahrt('JGameScreen.php?p=".$points."&k_id=".$k_id."')",$answer,"100 triple-tile","");
 ?>
 </p>
 <p>
 <?php
-_createQuestionTile("#","abfahrt('JGameScreen.php?p=".$points."&k_id=".$k_id."')","gewusst!","10 double-tile","");
-_createQuestionTile("#","abfahrt('JGameScreen.php?p=0&k_id=".$k_id."')","nicht gewusst...","10 double-tile","");
+_createTile("#","abfahrt('JGameScreen.php?p=".$points."')","gewusst!","10 double-tile","");
+_createTile("#","abfahrt('JGameScreen.php?p=0')","nicht gewusst...","10 double-tile right","");
 
 ?>
 </p>
