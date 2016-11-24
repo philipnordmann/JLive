@@ -74,4 +74,6 @@ $kategorie6 = $katarray(6);
 </table>
 
 
+<p>I LIKE HTML !!!!!!!!</p>
+
 </body>
