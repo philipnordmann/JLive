@@ -1,4 +1,5 @@
 <?php
+echo file_get_contents ( "template.html" );
 if (isset ( $_POST ['winner'] )) {
 	$winner = $_POST ['winner'];
 } else {
