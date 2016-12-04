@@ -78,6 +78,10 @@
     padding-top:25% !important;
 }
 
+.tile.ultra-tile:after{
+    padding-top:12% !important;
+}
+
 .tile.double-tile.vertical:after{
     padding-top:200% !important;
 }
@@ -88,6 +92,10 @@
 
 .tile.quadra-tile.vertical:after{
     padding-top:400% !important;
+}
+
+.tile.ultra-tile.vertical:after{
+    padding-top:800% !important;
 }
 
 /* 

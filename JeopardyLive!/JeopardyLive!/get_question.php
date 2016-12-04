@@ -42,8 +42,21 @@ if ($_POST) {
 </script>
 <?php
 $q_id = get_question_id ( $k_id, $points );
-$question = get_question ( $q_id );
+$question_data = get_question ( $q_id );
+$question = $question_data ['frage'];
 
-_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&q_id=" . $q_id . "')", $question, "100 triple-tile", "" );
 
+if ($question_data ['filetype'] == "NONE") {
+	_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&q_id=" . $q_id . "')", $question, "100 triple-tile", "" );
+} elseif ($question_data ['filetype'] == "AUDIO") {
+	_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&q_id=" . $q_id . "')", $question, "100 triple-tile", "" );
+	?><audio controls autoplay>
+			<source src="<?php echo $question_data ['file'];?>" type="audio/mpeg">
+		</audio>
+<?php
+} elseif ($question_data ['filetype'] == "PICTURE") {
+	_createQuestionTile ( "#", "abfahrt('get_answer.php?p=" . $points . "&q_id=" . $q_id . "')", $question, "100 ultra-tile", "" );
+	?><img src="<?php echo $question_data ['file'];?>"/>
+<?php
+}
 ?>

@@ -8,12 +8,14 @@ if (isset ( $_POST ['winner'] )) {
 
 if ($winner == 1) {
 	$text = "Team 1 hat gewonnen!";
-}
-elseif ($winner == 2){
+} elseif ($winner == 2) {
 	$text = "Team 2 hat gewonnen!";
-}
-else {
+} else {
 	$text = "Unentschieden!";
 }
 ?>
-<p class="winner"><?php echo $text;?></p>
+<body>
+	<div class="winner">
+		<p><?php echo $text;?></p>
+	</div>
+</body>

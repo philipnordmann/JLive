@@ -107,9 +107,9 @@ function get_question_id($k_id, $points) {
 <?php
 function get_question($f_id) {
 	include ("db.php");
-	$queryResult = mysqli_query ( $connection, "SELECT frage FROM fragen WHERE F_ID = $f_id" );
+	$queryResult = mysqli_query ( $connection, "SELECT frage, filetype, file FROM fragen WHERE F_ID = $f_id" );
 	$frage = mysqli_fetch_array ( $queryResult );
-	return $frage ['frage'];
+	return $frage;
 }
 ?>
 
